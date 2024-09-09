@@ -28,10 +28,10 @@ class Product(models.Model):
     )
     Purchase_price = models.CharField(max_length=100, verbose_name="Цена за покупку")
     created_at = models.DateField(
-        auto_now=False, auto_now_add=False, verbose_name="Дата создания"
+        auto_now_add=True, verbose_name="Дата создания"
     )
     updated_at = models.DateField(
-        auto_now=False, auto_now_add=False, verbose_name="Дата последнего изменения"
+        auto_now=True, verbose_name="Дата последнего изменения"
     )
 
     def __str__(self):
