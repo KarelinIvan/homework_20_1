@@ -5,16 +5,27 @@ from django.db import models
 
 
 class Product(models.Model):
-    Name = models.CharField(max_length=50, verbose_name="Наименование")
-    Description = models.TextField(max_length=1000, verbose_name="Описание")
-    Image = models.ImageField(upload_to="products/")
-    Category = models.ForeignKey("Category",
-                                 on_delete=models.SET_NULL,
-                                 null=True,
-                                 verbose_name="Продукт",
-                                 blank=True,
-                                 related_name="Product",
-                                 )
+    Name = models.CharField(
+        max_length=50,
+        verbose_name="Наименование",
+        help_text="Введите название продукта",
+    )
+    Description = models.TextField(
+        max_length=1000, verbose_name="Описание", help_text="Введите описание продукта"
+    )
+    Image = models.ImageField(
+        upload_to="products/",
+        verbose_name="Изображение продукта",
+        help_text="Загрузите изображение продукта",
+    )
+    Category = models.ForeignKey(
+        "Category",
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name="Продукт",
+        blank=True,
+        related_name="Product",
+    )
     Purchase_price = models.CharField(max_length=100, verbose_name="Цена за покупку")
     created_at = models.DateField(
         auto_now=False, auto_now_add=False, verbose_name="Дата создания"
