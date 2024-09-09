@@ -4,7 +4,7 @@ from catalog.apps import CatalogConfig
 from catalog.views import home
 from catalog.views import contacts
 
-appname = CatalogConfig.name
+app_name = CatalogConfig.name
 
 urlpatterns = [
     path('', home, name='home'),
