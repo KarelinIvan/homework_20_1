@@ -9,12 +9,12 @@ class Product(models.Model):
     Image = models.ImageField(upload_to='products/')
     Category = models.CharField(max_length=100, verbose_name='Категория')
     Purchase_price = models.CharField(max_length=100, verbose_name='Цена за покупку')
-    Date_of_creation = models.DateField(auto_now=False, auto_now_add=False, verbose_name='Дата создания')
-    Last_modified_date = models.DateField(auto_now=False, auto_now_add=False, verbose_name='Дата последнего изменения')
+    created_at = models.DateField(auto_now=False, auto_now_add=False, verbose_name='Дата создания')
+    updated_at = models.DateField(auto_now=False, auto_now_add=False, verbose_name='Дата последнего изменения')
 
     def __str__(self):
         return (f'{self.Name}{self.Description}{self.Category}{self.Purchase_price}'
-                f'{self.Date_of_creation}{self.Last_modified_date}')
+                f'{self.created_at}{self.updated_at}')
 
     class Meta:
         pass
