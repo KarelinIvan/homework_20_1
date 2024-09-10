@@ -15,11 +15,12 @@
 1. Импортируйте функцию include(): from django.urls import include, path
 2. Добавьте URL в urlpatterns: path('blog/', include('blog.urls'))
 """
-
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("catalog.urls", namespace="catalog")),
-]
+] + static(settings)
