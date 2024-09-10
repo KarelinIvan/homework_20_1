@@ -26,7 +26,7 @@ class Product(models.Model):
         blank=True,
         related_name="Product",
     )
-    Purchase_price = models.CharField(max_length=100, verbose_name="Цена за покупку")
+    Purchase_price = models.ImageField(verbose_name="Цена за покупку", help_text="Введите цену")
     created_at = models.DateField(
         auto_now_add=True, verbose_name="Дата создания"
     )
