@@ -47,8 +47,16 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50, verbose_name="Наименование категории", help_text="Введите название категории")
-    description = models.TextField(max_length=1000, verbose_name="Описание категории", help_text="Введите описание категории")
+    name = models.CharField(
+        max_length=50,
+        verbose_name="Наименование категории",
+        help_text="Введите название категории",
+    )
+    description = models.TextField(
+        max_length=1000,
+        verbose_name="Описание категории",
+        help_text="Введите описание категории",
+    )
 
     def __str__(self):
         return f"{self.name}{self.description}"
