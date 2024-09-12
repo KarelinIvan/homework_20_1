@@ -5,63 +5,54 @@ from django.db import models
 
 
 class Product(models.Model):
-    name = models.CharField(
+    Name = models.CharField(
         max_length=50,
         verbose_name="Наименование",
         help_text="Введите название продукта",
     )
-    description = models.TextField(
+    Description = models.TextField(
         max_length=1000, verbose_name="Описание", help_text="Введите описание продукта"
     )
-    image = models.ImageField(
+    Image = models.ImageField(
         upload_to="products/",
         verbose_name="Изображение продукта",
         help_text="Загрузите изображение продукта",
     )
-    category = models.ForeignKey(
+    Category = models.ForeignKey(
         "Category",
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name="Категория",
+        verbose_name="Продукт",
         blank=True,
         related_name="Product",
-        help_text="Выберете категорию продукта",
     )
-    purchase_price = models.IntegerField(
-        null=True, blank=True, verbose_name="Цена за покупку", help_text="Введите цену"
+    Purchase_price = models.ImageField(verbose_name="Цена за покупку", help_text="Введите цену")
+    created_at = models.DateField(
+        auto_now_add=True, verbose_name="Дата создания"
     )
-    created_at = models.DateField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateField(
         auto_now=True, verbose_name="Дата последнего изменения"
     )
 
     def __str__(self):
         return (
-            f"{self.name}{self.description}{self.category}{self.purchase_price}"
+            f"{self.Name}{self.Description}{self.Category}{self.Purchase_price}"
             f"{self.created_at}{self.updated_at}"
         )
 
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
-        ordering = ["name", "category"]
+        ordering = ["Name", "Category"]
 
 
 class Category(models.Model):
-    name = models.CharField(
-        max_length=50,
-        verbose_name="Наименование каиегории",
-        help_text="Введите название категории",
-    )
-    description = models.TextField(
-        max_length=1000,
-        verbose_name="Описание каиегории",
-        help_text="Введите описание категории",
-    )
+    Name = models.CharField(max_length=50, verbose_name="Наименование продукта")
+    Description = models.TextField(max_length=1000, verbose_name="Описание продукта")
 
     def __str__(self):
-        return f"{self.name}{self.description}"
+        return f"{self.Name}{self.Description}"
 
     class Meta:
-        verbose_name = "Категорию продукта"
-        verbose_name_plural = "Категория"
+        verbose_name = "Продукт"
+        verbose_name_plural = "Продукты"
