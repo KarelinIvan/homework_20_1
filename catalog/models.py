@@ -22,11 +22,11 @@ class Product(models.Model):
         "Category",
         on_delete=models.SET_NULL,
         null=True,
-        verbose_name="Продукт",
+        verbose_name="Категория",
         blank=True,
         related_name="Product",
     )
-    purchase_price = models.ImageField(
+    purchase_price = models.IntegerField(
         null=True, blank=True, verbose_name="Цена за покупку", help_text="Введите цену"
     )
     created_at = models.DateField(auto_now_add=True, verbose_name="Дата создания")
