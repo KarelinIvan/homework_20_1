@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Создавайте свои модели здесь.
+# Создавайте свои модели здесь
 
 
 class Product(models.Model):
