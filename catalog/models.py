@@ -64,3 +64,4 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категорию продукта"
         verbose_name_plural = "Категории"
+
