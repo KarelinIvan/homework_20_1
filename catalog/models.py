@@ -5,7 +5,6 @@ from django.db import models
 
 
 class Product(models.Model):
-    objects = None
     name = models.CharField(
         max_length=50,
         verbose_name="Наименование",
@@ -48,7 +47,6 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    objects = None
     name = models.CharField(
         max_length=50,
         verbose_name="Наименование категории",
@@ -66,3 +64,4 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категорию продукта"
         verbose_name_plural = "Категории"
+
