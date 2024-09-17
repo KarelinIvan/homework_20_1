@@ -4,13 +4,14 @@ from django.core.management import BaseCommand
 
 from catalog.models import Product, Category
 
+file_json = 'catalog.json'
 
 class Command(BaseCommand):
 
     @staticmethod
     def json_read_categories():
         # Здесь мы получаем данные из фикстурв с категориями
-        with open('categories.json', 'r', encoding='utf-8') as file:
+        with open(file_json, 'r', encoding='utf-8') as file:
             categories_data = file.read()
 
         return json.loads(categories_data)
@@ -18,7 +19,7 @@ class Command(BaseCommand):
     @staticmethod
     def json_read_products():
         # Здесь мы получаем данные из фикстурв с продуктами
-        with open('products.json', 'r', encoding='utf-8') as file:
+        with open(file_json, 'r', encoding='utf-8') as file:
             products_data = file.read()
 
         return json.loads(products_data)
