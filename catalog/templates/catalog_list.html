@@ -7,7 +7,7 @@
         {% for catalog in catalog %}
         <div class="col">
           <div class="card shadow-sm">
-            <img src="{{ product.image | media_filter }}" >
+            <img src="{{ catalog.image | media_filter }}" >
             <div class="card-body">
               <p class="card-text">Категория: {{ catalog.category }}</p>
               <p class="card-text">Наименование: {{ catalog.name }}</p>
