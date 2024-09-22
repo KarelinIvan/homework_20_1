@@ -18,6 +18,6 @@ def products_list(request):
     return render(request, "catalog_list.html", context)
 
 def catalog_detail(request, pk):
-    catalog = get_object_or_404(pk=pk)
+    catalog = get_object_or_404(Product, pk=pk)
     context = {"catalog": catalog}
     return render(request, 'catalog_detail.html', context)
