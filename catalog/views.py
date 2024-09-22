@@ -12,7 +12,7 @@ def home(request):
 def contacts(request):
     return render(request, "contacts.html")
 
-def products_list(request):
+def catalog_list(request):
     catalog = Product.objects.all()
     context = {"catalog": catalog}
     return render(request, "catalog_list.html", context)
