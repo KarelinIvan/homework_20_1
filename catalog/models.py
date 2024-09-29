@@ -44,6 +44,8 @@ class Product(models.Model):
         help_text="Укажите количество просмотров",
         default=0,
     )
+    is_published = models.BooleanField(default=True, verbose_name='опубликовано')
+    slug = models.CharField(max_length=150, verbose_name='slug', null=True, blank=True)
 
     class Meta:
         verbose_name = "Продукт"
