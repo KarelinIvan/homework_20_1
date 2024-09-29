@@ -39,6 +39,11 @@ class Product(models.Model):
             f"{self.name}{self.description}{self.category}{self.purchase_price}"
             f"{self.created_at}{self.updated_at}"
         )
+    views_counter = models.PositiveIntegerField(
+        verbose_name="Счёстчик просмотров",
+        help_text="Укажите количество просмотров",
+        default=0,
+    )
 
     class Meta:
         verbose_name = "Продукт"
