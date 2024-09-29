@@ -576,6 +576,16 @@ files = [
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
+name = "pytils"
+version = "0.4.1"
+description = "Russian-specific string utils"
+optional = false
+python-versions = "^3.7"
+files = [
+    {file = "pytils-0.4.1.tar.gz", hash = "sha256:aa109b1bc0ec4bdb7c9768520110348d8aeb0706600e6cf641272e6850e26eab"},
+]
+
+[[package]]
 name = "reverse"
 version = "0.1.0"
 description = "Reverse a file"
@@ -670,4 +680,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "73cb5e8a3366597b823c008e718b2283f248ec8b6bb13aaad639570b20594f00"
+content-hash = "ee2141196e43fa88b4a5c2146840d22accd974cceeec02f33588adfb4b4ccd0c"
