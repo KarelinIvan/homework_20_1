@@ -34,19 +34,6 @@ class Product(models.Model):
         auto_now=True, verbose_name="Дата последнего изменения"
     )
 
-    def __str__(self):
-        return (
-            f"{self.name}{self.description}{self.category}{self.purchase_price}"
-            f"{self.created_at}{self.updated_at}"
-        )
-    views_counter = models.PositiveIntegerField(
-        verbose_name="Счёстчик просмотров",
-        help_text="Укажите количество просмотров",
-        default=0,
-    )
-    is_published = models.BooleanField(default=True, verbose_name='опубликовано')
-    slug = models.CharField(max_length=150, verbose_name='slug', null=True, blank=True)
-
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
@@ -71,3 +58,41 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категорию продукта"
         verbose_name_plural = "Категории"
+
+
+class Blog(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name="Заголовок",
+        help_text="Введите заголовок статьи",
+    )
+    text = models.TextField(
+        verbose_name="Текст статьи", help_text="Введите текст статьи"
+    )
+    image = models.ImageField(
+        upload_to="Blog/image",
+        blank=True,
+        null=True,
+        verbose_name="Изображение",
+        help_text="Загрузите изображение",
+    )
+    category = models.CharField(
+        verbose_name="Признак публикации",
+        help_text="Введите признак публикации",
+        blank=True,
+        null=True,
+    )
+    created_at = models.DateField(
+        blank=True, null=True, verbose_name="Дата создания записи"
+    )
+    updated_at = models.DateField(
+        blank=True, null=True, verbose_name="Дата изменения записи"
+    )
+
+    class Meta:
+        verbose_name = "Статья"
+        verbose_name_plural = "Статьи"
+        ordering = ["title", "category", "created_at", "updated_at"]
+
+    def __str__(self):
+        return self.title
