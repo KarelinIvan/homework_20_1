@@ -8,11 +8,11 @@
                 <div class="card shadow-sm">
                     <img src="/media/{{ object.image }}"/>
                     <div class="card-body">
-                        <p class="card-text">Название: {{ blog.title }}</p>
-                        <p class="card-text">Содержимое: {{ blog.body }}</p>
-                        <p class="card-text">Дата создания записи: {{ blog.created_at }}</p>
-                        <p class="card-text">Просмотров: {{ blog.views_count }}</p>
-                        <p class="card-text">Опубликовано: {{ blog.is_published }}</p>
+                        <p class="card-text">Название: {{ object.title }}</p>
+                        <p class="card-text">Содержимое: {{ object.body }}</p>
+                        <p class="card-text">Дата создания записи: {{ object.created_at }}</p>
+                        <p class="card-text">Просмотров: {{ object.views_count }}</p>
+                        <p class="card-text">Опубликовано: {{ object.is_published }}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a class="btn btn-primary" href="{% url 'blog:update' blog.pk %}" role="button">Изменить</a>
