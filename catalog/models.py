@@ -34,19 +34,6 @@ class Product(models.Model):
         auto_now=True, verbose_name="Дата последнего изменения"
     )
 
-    def __str__(self):
-        return (
-            f"{self.name}{self.description}{self.category}{self.purchase_price}"
-            f"{self.created_at}{self.updated_at}"
-        )
-    views_counter = models.PositiveIntegerField(
-        verbose_name="Счёстчик просмотров",
-        help_text="Укажите количество просмотров",
-        default=0,
-    )
-    is_published = models.BooleanField(default=True, verbose_name='опубликовано')
-    slug = models.CharField(max_length=150, verbose_name='slug', null=True, blank=True)
-
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
