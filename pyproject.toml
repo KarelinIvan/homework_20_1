@@ -18,6 +18,7 @@ articles = "^0.1.0"
 objects = "^0.3.1"
 reverse = "^0.1.0"
 pytils = "^0.4.1"
+blog = "^1.0.1"
 
 
 [build-system]
