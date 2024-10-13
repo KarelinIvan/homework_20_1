@@ -1,8 +1,9 @@
+from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
-from catalog.forms import ProductForm
-from catalog.models import Product
+from catalog.forms import ProductForm, VersionForm
+from catalog.models import Product, Version
 
 
 # Создавайте свои мнения здесь.
@@ -17,6 +18,13 @@ class ProductListView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.object
+        active_versions = product.versions.filter(version_flag=True)
+        context['active_versions'] = active_versions
+        return context
 
 
 class ProductCreateView(CreateView):
@@ -35,6 +43,15 @@ class ProductCreateView(CreateView):
                 return self.form_invalid(form)
 
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        ProductFormset = inlineformset_factory(Product, Version, VersionForm, extra=1)
+        if self.request.method == 'POST':
+            context_data['formset'] = ProductFormset(self.request.POST, instance=self.object)
+        else:
+            context_data['formset'] = ProductFormset(instance=self.object)
+        return context_data
 
 
 class ProductUpdateView(UpdateView):
