@@ -16,7 +16,7 @@ class ProductForm(ModelForm):
 
         for word in forbidden_words:
             if word in cleaned_data:
-                raise forms.ValidationError('Данное название не подходит')
+                raise forms.ValidationError('Данное наименование не подходит')
 
         return cleaned_data
 
