@@ -13,6 +13,11 @@
                     <li><a href="{% url 'blog:create' %}" class="text-white">Создать новую карточку</a></li>
                     <li><a href="{% url 'blog:list' %}" class="text-white">Просмотр карточек</a></li>
                     <li><a href="{% url 'catalog:create_product' %}" class="text-white">Создать новый продукт</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'users:logout' %}" class="text-white">Выйти</a></li>
+                    {% else %}
+                    <li><a href="{% url 'users:login' %}" class="text-white">Войти</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
