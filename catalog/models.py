@@ -58,3 +58,34 @@ class Category(models.Model):
     class Meta:
         verbose_name = "Категорию продукта"
         verbose_name_plural = "Категории"
+
+
+class Version(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, verbose_name="Продукт", blank=True, null=True,
+                                related_name="versions"
+                                )
+    version_number = models.IntegerField(verbose_name="номер версии")
+    name = models.CharField(max_length=200, verbose_name="наименование версии")
+    version_flag = models.BooleanField(default=False, verbose_name="признак версии")
+
+    class Meta:
+        verbose_name = "Версия"
+        verbose_name_plural = "Версии"
+        ordering = ["product", "version_number", "name", "version_flag"]
+        constraints = [
+            models.UniqueConstraint(fields=['product', 'version_flag'],
+                                    condition=models.Q(version_flag=True),
+                                    name='unique_active_version')
+        ]
+
+    def __str__(self):
+        return f'{self.name} - {self.version_number}'
+
+    def save(self, *args, **kwargs):
+        if not self.version_number:
+            max_version = Version.objects.filter(product=self.product).aggregate(models.Max('version_number'))[
+                'version_number__max']
+            self.version_number = (max_version + 1) if max_version is not None else 1
+        if self.version_flag:
+            Version.objects.filter(product=self.product, version_flag=True).update(version_flag=False)
+        super().save(*args, **kwargs)
