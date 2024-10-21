@@ -19,6 +19,7 @@ def logout_view(request):
 
 
 class RegisterView(CreateView):
+    """Регистрация нового пользователя с подтверждением через email"""
     model = User
     form_class = UserRegisterForm
     template_name = 'users/register.html'
