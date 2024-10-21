@@ -1,6 +1,6 @@
 import secrets
 
-from django.conf.global_settings import EMAIL_HOST_USER
+from config.settings import EMAIL_HOST_USER
 from django.contrib.auth import logout
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.views import PasswordResetView
