@@ -137,7 +137,7 @@ LOGIN_URL = "users:login"
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
 EMAIL_HOST_USER = "auris2024@mail.ru"
-EMAIL_HOST_PASSWORD = "Mt076954"
+EMAIL_HOST_PASSWORD = "zdcyyA9SvwK47LiLBtem"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
