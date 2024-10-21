@@ -15,7 +15,6 @@ from pathlib import Path
 # Создайте пути внутри проекта следующим образом: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Настройки быстрого старта разработки — не подходят для производства
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = "django-insecure-hm*&0-545qd+hfr)pbg83#gcr$a2fo2wul@=u@s_(oc6d*1b4^
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Определение приложения
 
@@ -72,7 +70,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
 # База данных
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
@@ -86,7 +83,6 @@ DATABASES = {
         "PORT": "5432",
     }
 }
-
 
 # Проверка пароля
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -106,7 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Интернационализация
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
@@ -117,7 +112,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Статические файлы (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
@@ -138,10 +132,10 @@ AUTH_USER_MODEL = "users.User"
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-LOGIN_URL="users:login"
+LOGIN_URL = "users:login"
 
 EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = 465
+EMAIL_PORT = 2525
 EMAIL_HOST_USER = "auris2024@mail.ru"
 EMAIL_HOST_PASSWORD = "Mt076954"
 EMAIL_USE_TLS = False
