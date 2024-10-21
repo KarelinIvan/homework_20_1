@@ -142,8 +142,8 @@ LOGIN_URL="users:login"
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = "ivan.karelin.1993@mail.ru"
-EMAIL_HOST_PASSWORD = "Ac192Mt4551"
+EMAIL_HOST_USER = "auris2024@mail.ru"
+EMAIL_HOST_PASSWORD = "Mt076954"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
