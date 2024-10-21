@@ -134,10 +134,10 @@ LOGOUT_REDIRECT_URL = '/'
 
 LOGIN_URL = "users:login"
 
-EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = 2525
-EMAIL_HOST_USER = "auris2024@mail.ru"
-EMAIL_HOST_PASSWORD = "zdcyyA9SvwK47LiLBtem"
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "ivankarelin93@ya.ru"
+EMAIL_HOST_PASSWORD = "ymmrkxkpscchvoee"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
