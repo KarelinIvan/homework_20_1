@@ -1,5 +1,8 @@
+import random
 import secrets
+import string
 
+from catalog.forms import StyleFormMixin
 from config.settings import EMAIL_HOST_USER
 from django.contrib.auth import logout
 from django.contrib.auth.forms import PasswordResetForm
@@ -58,7 +61,7 @@ class ProfileView(UpdateView):
         return self.request.user
 
 
-class UserPasswordResetView(PasswordResetView):
+class UserPasswordResetView(PasswordResetView, StyleFormMixin):
     """
     Контроллер для восстановления пароля
     """
@@ -72,8 +75,9 @@ class UserPasswordResetView(PasswordResetView):
         try:
             user = User.objects.get(email=email)
             if user:
-                password = User.objects.make_random_password(length=10)
+                password = ''.join([random.choice(string.digits + string.ascii_letters) for i in range(0, 10)])
                 user.set_password(password)
+                user.is_active = True
                 user.save()
                 send_mail(
                     subject="Сброс пароля",
@@ -83,7 +87,7 @@ class UserPasswordResetView(PasswordResetView):
                 )
             return redirect(reverse("users:login"))
         except:
-            return redirect(reverse("users:invalid_email"))
+            return redirect(reverse("users:register"))
 
 
 class UserInValidEmail(TemplateView):
