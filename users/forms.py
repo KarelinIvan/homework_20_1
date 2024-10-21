@@ -29,4 +29,4 @@ class ResetPasswordForm(StyleFormMixin, PasswordResetForm):
 
     class Meta:
         model = User
-        fields = ['email', ]
+        fields = ('email',)
