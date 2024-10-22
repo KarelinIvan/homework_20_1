@@ -43,10 +43,10 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
                 form.add_error('name', 'Данное название не подходит.')
                 return self.form_invalid(form)
 
-            product = form.save()
-            user = self.request.user
-            product.owner = user
-            product.save()
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
 
         return super().form_valid(form)
 
