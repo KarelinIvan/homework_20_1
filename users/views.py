@@ -2,16 +2,17 @@ import random
 import secrets
 import string
 
-from catalog.forms import StyleFormMixin
-from config.settings import EMAIL_HOST_USER
 from django.contrib.auth import logout
 from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordResetView
 from django.core.mail import send_mail
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, TemplateView
 
+from catalog.forms import StyleFormMixin
+from config.settings import EMAIL_HOST_USER
 from users.forms import UserRegisterForm, UserProfileForm
 from users.models import User
 
@@ -52,7 +53,7 @@ def email_verification(request, token):
     return redirect(reverse('users:login'))
 
 
-class ProfileView(UpdateView):
+class ProfileView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = UserProfileForm
     success_url = reverse_lazy('users:profile')
