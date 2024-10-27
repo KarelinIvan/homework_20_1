@@ -47,3 +47,9 @@ class VersionForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Version
         fields = ('version_number', 'name', 'version_flag')
+
+
+class ProductModeratorForm(ProductForm):
+    class Meta:
+        model = Product
+        fields = ['description', 'category']
