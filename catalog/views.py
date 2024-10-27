@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
@@ -12,11 +13,11 @@ class ContactsPageView(TemplateView):
     template_name = "catalog/contacts.html"
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
     def get_context_data(self, **kwargs):
@@ -27,7 +28,7 @@ class ProductDetailView(DetailView):
         return context
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:catalog_list")
@@ -42,6 +43,11 @@ class ProductCreateView(CreateView):
                 form.add_error('name', 'Данное название не подходит.')
                 return self.form_invalid(form)
 
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
+
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -54,7 +60,7 @@ class ProductCreateView(CreateView):
         return context_data
 
 
-class ProductUpdateView(UpdateView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:catalog_list")
@@ -80,6 +86,6 @@ class ProductUpdateView(UpdateView):
         return context_data
 
 
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:catalog_list')
