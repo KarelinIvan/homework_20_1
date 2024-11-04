@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, TemplateView, CreateView,
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
 from catalog.models import Product, Version
+from catalog.services import get_product_from_cache
 
 
 # Создавайте свои мнения здесь.
@@ -16,6 +17,9 @@ class ContactsPageView(TemplateView):
 
 class ProductListView(LoginRequiredMixin, ListView):
     model = Product
+
+    def get_queryset(self):
+        return get_product_from_cache()
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
